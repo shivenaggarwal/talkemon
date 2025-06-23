@@ -46,14 +46,13 @@ export const DashboardSidebar = () => {
 
     return(
         <Sidebar className="bg-gradient-to-br from-amber-100/80 to-orange-100/80 backdrop-blur-sm border-0 shadow-2xl">
-            <SidebarHeader className="text-amber-900 bg-gradient-to-br from-cream-100 to-orange-50 border-b-2 border-amber-200 p-0">
-                <Link href="/" className="flex items-center gap-3 px-6 py-6 hover:scale-[1.02] transition-all duration-300">
-                 <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 shadow-2xl ring-2 ring-amber-200/50">
-                    <Image src="/logo.svg" height={80} width={80} alt="talkemon" className="filter drop-shadow-lg"/>
-                 </div>
-                 <p className="text-3xl font-bold font-serif tracking-wide text-amber-900 drop-shadow-sm">Talkemon</p>
+            <SidebarHeader className="flex justify-center items-center w-full text-amber-900 bg-gradient-to-br from-cream-100 to-orange-50 border-b-2 border-amber-200 p-0">
+                <Link href="/" className="flex items-center gap-3 py-6 hover:scale-[1.02] transition-all duration-300 max-w-fit">
+                    <Image src="/logo.svg" height={48} width={48} alt="talkemon" className="filter drop-shadow-lg"/>
+                    <p className="text-3xl font-bold font-serif tracking-wide text-amber-900 drop-shadow-sm">Talkemon</p>
                 </Link>
             </SidebarHeader>
+            
             <div className="px-6 py-4">
                 {/* <Separator className="bg-gradient-to-r from-transparent via-amber-300/80 to-transparent h-0.5 shadow-sm"/> */}
             </div>
