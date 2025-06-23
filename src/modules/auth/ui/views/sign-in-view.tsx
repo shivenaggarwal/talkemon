@@ -83,54 +83,64 @@ export const SignInView = () => {
 
     return (
         <div className="flex flex-col gap-6">
-            <Card className="overflow-hidden p-0">
+            <Card className="overflow-hidden p-0 shadow-2xl border-0 bg-gradient-to-br from-amber-100/80 to-orange-100/80 backdrop-blur-sm rounded-3xl max-w-4xl mx-auto w-full">
                 <CardContent className="grid p-0 md:grid-cols-2">
 
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="p-6 md:p-8">
-                        <div className="flex flex-col gap-6">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="p-8 md:p-12 bg-gradient-to-br from-cream-100 to-orange-50">
+                        <div className="flex flex-col gap-8">
                             <div className="flex flex-col items-center text-center">
-                                <h1 className="text-2xl font-bold">
+                                <h1 className="text-3xl font-bold text-amber-900 font-serif tracking-wide mb-2">
                                     Welcome back!
                                 </h1>
-                                <p className="text-muted-foreground text-balance">
+                                <p className="text-amber-700/80 text-balance font-light">
                                     Login in to your account
                                 </p>
                             </div>
-                            <div className="grid gap-3">
+                            <div className="grid gap-4">
                                 <FormField 
                                     control={form.control}
                                     name="email"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Email</FormLabel>
+                                            <FormLabel className="text-amber-800 font-medium text-sm">Email</FormLabel>
                                             <FormControl>
-                                                <Input type="email" placeholder="jon@example.com" {...field} />
+                                                <Input 
+                                                    type="email" 
+                                                    placeholder="jon@example.com" 
+                                                    className="bg-amber-50/50 border-2 border-amber-200 rounded-xl px-4 py-3 text-amber-900 placeholder:text-amber-400 focus:border-amber-400 focus:ring-2 focus:ring-amber-200 transition-all duration-300 shadow-inner"
+                                                    {...field} 
+                                                />
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage className="text-red-600" />
                                         </FormItem>
                                     )}
                                 />
                             </div>
-                            <div className="grid gap-3">
+                            <div className="grid gap-4">
                                 <FormField 
                                     control={form.control}
                                     name="password"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Password</FormLabel>
+                                            <FormLabel className="text-amber-800 font-medium text-sm">Password</FormLabel>
                                             <FormControl>
-                                                <Input type="password" placeholder="********" {...field} />
+                                                <Input 
+                                                    type="password" 
+                                                    placeholder="********" 
+                                                    className="bg-amber-50/50 border-2 border-amber-200 rounded-xl px-4 py-3 text-amber-900 placeholder:text-amber-400 focus:border-amber-400 focus:ring-2 focus:ring-amber-200 transition-all duration-300 shadow-inner"
+                                                    {...field} 
+                                                />
                                             </FormControl>
-                                            <FormMessage />
+                                            <FormMessage className="text-red-600" />
                                         </FormItem>
                                     )}
                                 />
                             </div>
                             {!!error && (
-                                <Alert className="bg-destructive/10 border-none">
-                                    <OctagonAlert className="h-4 w-4 !text-destructive" />
-                                    <AlertTitle>
+                                <Alert className="bg-red-100/80 border-2 border-red-200 rounded-xl">
+                                    <OctagonAlert className="h-4 w-4 !text-red-600" />
+                                    <AlertTitle className="text-red-700">
                                         {error}
                                     </AlertTitle>
                                 </Alert>
@@ -138,12 +148,15 @@ export const SignInView = () => {
                             <Button 
                                 disabled={pending}
                                 type="submit" 
-                                className="w-full"
+                                className="w-full bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-500 hover:to-orange-500 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] border-0"
                             >
                                 Sign In
                             </Button>
-                            <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
-                            <span className="bg-card text-muted-foreground relative z-10 px-2">
+                            <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-amber-300">
+                            
+                            {/* <span className="bg-gradient-to-r from-cream-100 to-orange-50 text-amber-700 relative z-10 px-2"> */}
+
+                            <span className="bg-gradient-to-r from-cream-100 to-orange-50 text-amber-700 relative z-10 px-2">
                                 Or continue with
                             </span>
                             </div>
@@ -152,23 +165,23 @@ export const SignInView = () => {
                                 variant={"outline"}
                                 onClick={() => onSocial("google")}
                                 type="button" 
-                                className="w-full"
+                                className="w-full bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 rounded-xl py-3 transition-all duration-300 shadow-md hover:shadow-lg"
                                 disabled={pending} >
-                                    <FaGoogle/>
+                                    <FaGoogle className="text-amber-600"/>
                                 </Button>
                                 <Button 
                                 variant={"outline"} 
                                 onClick={() => onSocial("github")}
                                 type="button" 
-                                className="w-full" 
+                                className="w-full bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 rounded-xl py-3 transition-all duration-300 shadow-md hover:shadow-lg" 
                                 disabled={pending}
                                 >
-                                    <FaGithub/>
+                                    <FaGithub className="text-amber-600"/>
                                 </Button>
                             </div>
-                            <div className="text-center text-sm">
+                            <div className="text-center text-sm text-amber-700">
                                 Don&apos;t have an account?{" "}
-                                <Link href="/sign-up" className="text-primary underline underline-offset-4">
+                                <Link href="/sign-up" className="text-amber-600 underline underline-offset-4 hover:text-amber-800 transition-colors duration-300 font-medium">
                                     Sign Up
                                 </Link>
                             </div>
@@ -176,19 +189,24 @@ export const SignInView = () => {
                     </form>
                 </Form>
 
-                 <div className="bg-radial from-green-700 to-green-900 relative hidden md:flex flex-col gap-y-4 items-center justify-center">
-                    <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]" />
-                    <p className="text-2xl font-semibold text-white">
+                 <div className="bg-gradient-to-br from-amber-400 via-orange-400 to-red-400 relative hidden md:flex flex-col gap-y-6 items-center justify-center p-8">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-6 shadow-2xl">
+                        <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px] filter drop-shadow-lg" />
+                    </div>
+                    <p className="text-3xl font-bold text-white font-serif tracking-wide drop-shadow-lg">
                         Talkemon
                     </p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent rounded-r-3xl"></div>
+                    <div className="absolute top-4 right-4 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
+                    <div className="absolute bottom-8 left-8 w-16 h-16 bg-white/10 rounded-full blur-lg"></div>
                 </div>
                 </CardContent>
             </Card>
 
-            <div className="text-muted-foreground *:[a]:href:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
+            <div className="text-amber-700/80 text-center text-xs text-balance max-w-md mx-auto">
             By signing in, you agree to our{" "}
-                <Link href="/terms" className="text-primary">Terms of Service</Link> and{" "}
-                <Link href="/privacy" className="text-primary">Privacy Policy</Link>.
+                <Link href="/terms" className="text-amber-600 underline underline-offset-4 hover:text-amber-800 transition-colors duration-300">Terms of Service</Link> and{" "}
+                <Link href="/privacy" className="text-amber-600 underline underline-offset-4 hover:text-amber-800 transition-colors duration-300">Privacy Policy</Link>.
             </div>
         </div>
     );
