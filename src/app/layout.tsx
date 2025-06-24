@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { TRPCReactProvider  } from "@/trpc/client";
+import { TRPCReactProvider } from "@/trpc/client";
 
 import "./globals.css";
 
@@ -11,7 +11,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Talkemon",
-  description: "Talkemon is a real-time AI video calling app where every meeting is powered by a custom, talking AI agent.",
+  description:
+    "Talkemon is a real-time AI video calling app where every meeting is powered by a custom, talking AI agent.",
 };
 
 export default function RootLayout({
@@ -21,13 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <TRPCReactProvider>
-    <html lang="en">
-      <body
-        className={`${inter.className} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+      <html lang="en">
+        <body className={`${inter.className} antialiased`}>{children}</body>
+      </html>
     </TRPCReactProvider>
   );
 }
