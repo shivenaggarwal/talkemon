@@ -18,7 +18,8 @@ import {
   FormMessage,
   FormLabel,
 } from "@/components/ui/form";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface AgentFormProps {
   onSucess?: () => void;
@@ -32,13 +33,23 @@ export const AgentForm = ({
   initialValues,
 }: AgentFormProps) => {
   const trpc = useTRPC();
-  const router = useRouter();
+  // const router = useRouter();
   const queryClient = useQueryClient();
 
   const createAgent = useMutation(
     trpc.agents.create.mutationOptions({
-      onSuccess: () => {},
-      onError: () => {},
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(trpc.agents.getMany.queryOptions());
+        if (initialValues?.id) {
+          await queryClient.invalidateQueries(
+            trpc.agents.getOne.queryOptions({ id: initialValues.id })
+          );
+        }
+        onSucess?.();
+      },
+      onError: (error) => {
+        toast.error(error.message); //todo check if error code is forbidden redirect to upgrade
+      },
     })
   );
   const form = useForm<z.infer<typeof agentInsertSchema>>({
