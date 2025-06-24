@@ -34,7 +34,7 @@ export const columns: ColumnDef<AgentGetOne>[] = [
   {
     accessorKey: "meetingCount",
     header: "Meetings",
-    cell: ({ row }) => (
+    cell: () => (
       <Badge
         variant="outline"
         className="flex items-center gap-x-2 [&>svg]:size-4 bg-gradient-to-r from-amber-50/50 to-orange-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 shadow-sm transition-all duration-300"
