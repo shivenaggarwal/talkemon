@@ -191,7 +191,7 @@ export const SignInView = () => {
 
                  <div className="bg-gradient-to-br from-amber-400 via-orange-400 to-red-400 relative hidden md:flex flex-col gap-y-6 items-center justify-center p-8">
                     <div className="bg-white/20 backdrop-blur-sm rounded-full p-6 shadow-2xl">
-                        <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px] filter drop-shadow-lg" />
+                        <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px] filter drop-shadow-lg"/>
                     </div>
                     <p className="text-3xl font-bold text-white font-serif tracking-wide drop-shadow-lg">
                         Talkemon
