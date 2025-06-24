@@ -1,0 +1,10 @@
+# talkemon
+
+real time AI agent video calls
+train 'em. talk to 'em. let them run your meetings.
+
+## setup
+
+```bash
+npm run dev
+```
