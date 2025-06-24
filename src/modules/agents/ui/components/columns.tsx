@@ -16,13 +16,15 @@ export const columns: ColumnDef<AgentGetOne>[] = [
           <GeneratedAvatar
             variant="botttsNeutral"
             seed={row.original.name}
-            className="size-6"
+            className="size-6 border-2 border-amber-300 rounded-full shadow-sm ring-2 ring-amber-200/50"
           />
-          <span className="font-semibold capitalize">{row.original.name}</span>
+          <span className="font-semibold capitalize text-amber-900 tracking-tight">
+            {row.original.name}
+          </span>
         </div>
         <div className="flex items-center gap-x-2">
-          <CornerDownRightIcon className="size-3 text-muted-foreground" />
-          <span className="text-sm text-muted-foreground max-w-[200px] truncate capitalize">
+          <CornerDownRightIcon className="size-3 text-amber-600/70" />
+          <span className="text-sm text-amber-700/80 max-w-[200px] truncate capitalize">
             {row.original.instructions}
           </span>
         </div>
@@ -35,9 +37,9 @@ export const columns: ColumnDef<AgentGetOne>[] = [
     cell: ({ row }) => (
       <Badge
         variant="outline"
-        className="flex items-center gap-x-2 [&>svg]:size-4"
+        className="flex items-center gap-x-2 [&>svg]:size-4 bg-gradient-to-r from-amber-50/50 to-orange-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 shadow-sm transition-all duration-300"
       >
-        <VideoIcon className="text-blue-700" />5 meetings
+        <VideoIcon className="text-amber-600" />5 meetings
         {/* {row.original.meetingCount}{" "}
         {row.original.meetingCount === 1 ? "meeting" : "meetings"} */}
       </Badge>
