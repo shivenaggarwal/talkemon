@@ -72,58 +72,76 @@ export const AgentForm = ({
   };
 
   return (
-    <Form {...form}>
-      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <GeneratedAvatar
-          seed={form.watch("name")}
-          variant="botttsNeutral"
-          className="border size-16"
-        />
-        <FormField
-          name="name"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input {...field} placeholder="e.g. Physicist" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="instructions"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Instructions</FormLabel>
-              <FormControl>
-                <Textarea
-                  {...field}
-                  placeholder="You are a helpful physicist that can help with late night research work."
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="flex justify-between gap-x-2">
-          {onCancel && (
+    <div className="bg-gradient-to-br from-amber-50/50 to-orange-50/50 p-6 rounded-xl border-2 border-amber-200 shadow-lg backdrop-blur-sm">
+      <Form {...form}>
+        <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+          <div className="flex justify-center">
+            <GeneratedAvatar
+              seed={form.watch("name")}
+              variant="botttsNeutral"
+              className="border-2 border-amber-300 size-16 rounded-full shadow-md ring-2 ring-amber-200/50"
+            />
+          </div>
+          <FormField
+            name="name"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-amber-900 font-semibold tracking-tight">
+                  Name
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="e.g. Physicist"
+                    className="border-2 border-amber-200 bg-amber-50/30 text-amber-900 placeholder:text-amber-600/70 focus:border-amber-400 focus:ring-amber-300/50 transition-all duration-300 rounded-lg h-11 shadow-sm"
+                  />
+                </FormControl>
+                <FormMessage className="text-red-600" />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="instructions"
+            control={form.control}
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-amber-900 font-semibold tracking-tight">
+                  Instructions
+                </FormLabel>
+                <FormControl>
+                  <Textarea
+                    {...field}
+                    placeholder="You are a helpful physicist that can help with late night research work."
+                    className="border-2 border-amber-200 bg-amber-50/30 text-amber-900 placeholder:text-amber-600/70 focus:border-amber-400 focus:ring-amber-300/50 transition-all duration-300 rounded-lg min-h-[100px] shadow-sm resize-none"
+                  />
+                </FormControl>
+                <FormMessage className="text-red-600" />
+              </FormItem>
+            )}
+          />
+          <div className="flex justify-between gap-x-3 pt-4">
+            {onCancel && (
+              <Button
+                variant="ghost"
+                disabled={isPending}
+                type="button"
+                onClick={() => onCancel()}
+                className="bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-md rounded-xl h-11 px-6 font-medium tracking-tight"
+              >
+                Cancel
+              </Button>
+            )}
             <Button
-              variant="ghost"
               disabled={isPending}
-              type="button"
-              onClick={() => onCancel()}
+              type="submit"
+              className="bg-gradient-to-r from-amber-400 to-orange-400 border-2 border-amber-400 text-white font-semibold hover:from-amber-500 hover:to-orange-500 hover:border-amber-500 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-md rounded-xl h-11 px-6 tracking-tight ml-auto"
             >
-              Cancel
+              {isEdit ? "Update" : "Create"}
             </Button>
-          )}
-          <Button disabled={isPending} type="submit">
-            {isEdit ? "Update" : "Create"}
-          </Button>
-        </div>
-      </form>
-    </Form>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 };
