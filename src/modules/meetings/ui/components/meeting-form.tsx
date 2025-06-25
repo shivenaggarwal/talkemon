@@ -108,6 +108,7 @@ export const MeetingForm = ({
       <NewAgentDialog
         open={openNewAgentDialog}
         onOpenChange={setOpenNewAgentDialog}
+        className="[&_.dialog-content]:bg-gradient-to-br [&_.dialog-content]:from-amber-50/95 [&_.dialog-content]:to-orange-50/95 [&_.dialog-content]:border-2 [&_.dialog-content]:border-amber-200 [&_.dialog-content]:shadow-2xl [&_.dialog-content]:backdrop-blur-sm [&_.dialog-overlay]:bg-amber-900/20 [&_.dialog-title]:text-amber-900 [&_.dialog-description]:text-amber-700 [&_input]:border-2 [&_input]:border-amber-200 [&_input]:bg-amber-50/30 [&_input]:text-amber-900 [&_input]:placeholder:text-amber-600/70 [&_input:focus]:border-amber-400 [&_input:focus]:ring-amber-300/50 [&_button[type=submit]]:bg-gradient-to-r [&_button[type=submit]]:from-amber-400 [&_button[type=submit]]:to-orange-400 [&_button[type=submit]]:border-2 [&_button[type=submit]]:border-amber-400 [&_button[type=submit]]:text-white [&_button[type=submit]]:font-semibold [&_button[type=submit]:hover]:from-amber-500 [&_button[type=submit]:hover]:to-orange-500 [&_button[type=submit]:hover]:border-amber-500 [&_button[type=submit]:hover]:shadow-lg [&_button[type=submit]:hover]:scale-[1.02] [&_button[type=submit]]:transition-all [&_button[type=submit]]:duration-300 [&_button[type=submit]]:shadow-md [&_button[type=submit]]:rounded-xl [&_button[variant=ghost]]:bg-amber-50/50 [&_button[variant=ghost]]:border-2 [&_button[variant=ghost]]:border-amber-200 [&_button[variant=ghost]]:text-amber-800 [&_button[variant=ghost]:hover]:bg-amber-100 [&_button[variant=ghost]:hover]:border-amber-300 [&_button[variant=ghost]:hover]:shadow-lg [&_button[variant=ghost]:hover]:scale-[1.02] [&_button[variant=ghost]]:transition-all [&_button[variant=ghost]]:duration-300 [&_button[variant=ghost]]:shadow-md [&_button[variant=ghost]]:rounded-xl [&_label]:text-amber-900 [&_label]:font-semibold [&_label]:tracking-tight [&_.form-message]:text-red-600"
       />
       <div className="bg-gradient-to-br from-amber-50/50 to-orange-50/50 p-6 rounded-xl border-2 border-amber-200 shadow-lg backdrop-blur-sm">
         <Form {...form}>
@@ -162,10 +163,10 @@ export const MeetingForm = ({
                     />
                   </FormControl>
                   <FormDescription>
-                    Not found what you&apos;re looking for?{""}
+                    Not found what you&apos;re looking for?{" "}
                     <button
                       type="button"
-                      className="text-primary hover:underline"
+                      className="text-amber-600 hover:text-amber-800 hover:underline transition-colors duration-200 font-medium"
                       onClick={() => setOpenNewAgentDialog(true)}
                     >
                       Create new agent

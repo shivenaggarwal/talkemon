@@ -42,25 +42,27 @@ export const CommandSelect = ({
         type="button"
         variant="outline"
         className={cn(
-          "h-9 justify-around font-normal p-x-2",
-          !selectedOption && "text-muted-foreground",
+          "h-9 justify-around font-normal p-x-2 bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-sm rounded-lg font-medium tracking-tight",
+          !selectedOption && "text-amber-600/70",
           className
         )}
       >
         <div>{selectedOption?.children ?? placeholder}</div>
-        <ChevronsUpDownIcon />
+        <ChevronsUpDownIcon className="text-amber-600/70" />
       </Button>
       <CommandResponsiveDialog
         shouldFilter={!onSearch}
         open={open}
         onOpenChange={setOpen}
       >
-        <CommandInput placeholder="Search..." onValueChange={onSearch} />
-        <CommandList>
+        <CommandInput
+          placeholder="Search..."
+          onValueChange={onSearch}
+          className="border-2 border-amber-200 bg-amber-50/30 text-amber-900 placeholder:text-amber-600/70 focus:border-amber-400 focus:ring-amber-300/50"
+        />
+        <CommandList className="bg-gradient-to-br from-amber-50/30 to-orange-50/30 border-2 border-amber-200 shadow-lg backdrop-blur-sm">
           <CommandEmpty>
-            <span className="text-muted-foreground text-sm">
-              No options found
-            </span>
+            <span className="text-amber-700/70 text-sm">No options found</span>
           </CommandEmpty>
           {options.map((option) => (
             <CommandItem
@@ -69,6 +71,7 @@ export const CommandSelect = ({
                 onSelect(option.value);
                 setOpen(false);
               }}
+              className="text-amber-800 hover:bg-amber-100/50 hover:text-amber-900 transition-all duration-200"
             >
               {option.children}
             </CommandItem>
