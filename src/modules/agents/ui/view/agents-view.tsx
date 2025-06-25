@@ -7,7 +7,7 @@ import { LoadingState } from "@/components/loading-state";
 import { useAgentsFilters } from "@/modules/agents/hooks/use-agents-filter";
 import { columns } from "@/modules/agents/ui/components/columns";
 import { DataPagination } from "@/modules/agents/ui/components/data-pagination";
-import { DataTable } from "@/modules/agents/ui/components/data-table";
+import { DataTable } from "@/components/data-table";
 import { useTRPC } from "@/trpc/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
