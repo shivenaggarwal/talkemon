@@ -3,14 +3,19 @@ import Image from "next/image";
 interface Props {
   title: string;
   description: string;
+  image?: string;
 }
 
-export const EmptyState = ({ title, description }: Props) => {
+export const EmptyState = ({
+  title,
+  description,
+  image = "/logo.svg",
+}: Props) => {
   return (
     <div className="flex flex-col items-center justify-center bg-gradient-to-br from-amber-50/30 to-orange-50/30 p-8 rounded-xl border-2 border-amber-200/50 shadow-sm backdrop-blur-sm">
       <div className="p-4 rounded-full bg-gradient-to-br from-amber-100/50 to-orange-100/50 border-2 border-amber-200 shadow-md ring-2 ring-amber-200/30 mb-6">
         <Image
-          src="/logo.svg"
+          src={image}
           alt="Empty"
           width={240}
           height={240}

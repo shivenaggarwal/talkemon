@@ -3,7 +3,11 @@
 import { ErrorState } from "@/components/error-state";
 import { LoadingState } from "@/components/loading-state";
 import { useConfirm } from "@/hooks/use-confirm";
+import { ActiveState } from "@/modules/meetings/ui/components/active-state";
+import { CancelledState } from "@/modules/meetings/ui/components/cancelled-state";
 import { MeetingIdViewHeader } from "@/modules/meetings/ui/components/meeting-id-view-header";
+import { ProcessingState } from "@/modules/meetings/ui/components/processing-state";
+import { UpcomingState } from "@/modules/meetings/ui/components/upcoming-state";
 import { UpdateMeetingialog } from "@/modules/meetings/ui/components/update-meeting-dialog";
 import { useTRPC } from "@/trpc/client";
 import {
@@ -50,6 +54,12 @@ export const MeetingIdView = ({ meetingId }: Props) => {
     await removeMeeting.mutateAsync({ id: meetingId });
   };
 
+  const isActive = data.status == "active";
+  const isCompleted = data.status == "completed";
+  const isCancelled = data.status == "cancelled";
+  const isProcessing = data.status == "processing";
+  const isUpcoming = data.status == "upcoming";
+
   return (
     <>
       <RemoveConfirmation />
@@ -65,6 +75,18 @@ export const MeetingIdView = ({ meetingId }: Props) => {
           onEdit={() => setUpdateMeetingDialogOpen(true)}
           onRemove={handleRemoveMeeting}
         />
+        {isCompleted && <div>COMPLETED</div>}
+
+        {isProcessing && <ProcessingState />}
+        {isCancelled && <CancelledState />}
+        {isActive && <ActiveState meetingId={meetingId} />}
+        {isUpcoming && (
+          <UpcomingState
+            meetingId={meetingId}
+            onCancelMeeting={() => {}}
+            isCancelling={false}
+          />
+        )}
       </div>
     </>
   );
