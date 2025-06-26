@@ -47,7 +47,7 @@ export const CommandSelect = ({
         type="button"
         variant="outline"
         className={cn(
-          "h-9 justify-around font-normal p-x-2 bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-sm rounded-lg font-medium tracking-tight",
+          "h-9 justify-around p-x-2 bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-sm rounded-lg font-medium tracking-tight",
           !selectedOption && "text-amber-600/70",
           className
         )}
