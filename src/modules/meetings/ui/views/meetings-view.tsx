@@ -5,7 +5,6 @@ import { DataTable } from "@/components/data-table";
 import { EmptyState } from "@/components/empty-state";
 import { ErrorState } from "@/components/error-state";
 import { LoadingState } from "@/components/loading-state";
-import { meetings } from "@/db/schema";
 import { useMeetingsFilters } from "@/modules/meetings/hooks/use-meetings-filter";
 import { columns } from "@/modules/meetings/ui/components/columns";
 import { useTRPC } from "@/trpc/client";
