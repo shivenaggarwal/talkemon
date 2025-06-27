@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { GeneratedAvatar } from "@/components/generated-avatar";
-import { botttsNeutral } from "@dicebear/collection";
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { formatDuration } from "@/lib/utils";
