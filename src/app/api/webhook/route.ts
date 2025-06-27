@@ -93,6 +93,7 @@ export async function POST(req: NextRequest) {
       openAiApiKey: process.env.OPENAI_API_KEY!,
       agentUserId: existingAgent.id,
     });
+    // console.log("real time call", realtimeClient);
     console.log("OpenAI agent connected.");
 
     console.log(
@@ -103,6 +104,53 @@ export async function POST(req: NextRequest) {
     realtimeClient.updateSession({
       instructions: existingAgent.instructions,
     });
+    console.log("real time call", realtimeClient);
+
+    console.log("real time call", realtimeClient);
+    if (realtimeClient && typeof realtimeClient.realtime?.on === "function") {
+      console.log("im working yayaayyyayyayayayayayaayayyy");
+      realtimeClient.realtime.on("server.session.created", (event) => {
+        console.log("[Agent Debug] server.session.created", event);
+      });
+      realtimeClient.realtime.on("server.response.created", (event) => {
+        console.log("[Agent Debug] server.response.created", event);
+      });
+      realtimeClient.realtime.on(
+        "server.response.output_item.added",
+        (event) => {
+          console.log("[Agent Debug] server.response.output_item.added", event);
+        }
+      );
+      realtimeClient.realtime.on("server.response.audio.delta", (event) => {
+        console.log("[Agent Debug] server.response.audio.delta", event);
+      });
+      realtimeClient.realtime.on("server.response.text.delta", (event) => {
+        console.log("[Agent Debug] server.response.text.delta", event);
+      });
+      realtimeClient.realtime.on(
+        "server.input_audio_buffer.speech_started",
+        (event) => {
+          console.log(
+            "[Agent Debug] server.input_audio_buffer.speech_started",
+            event
+          );
+        }
+      );
+      realtimeClient.realtime.on(
+        "server.input_audio_buffer.speech_stopped",
+        (event) => {
+          console.log(
+            "[Agent Debug] server.input_audio_buffer.speech_stopped",
+            event
+          );
+        }
+      );
+    } else {
+      console.warn(
+        "[Agent Debug] realtimeClient.realtime.on is not a function or realtime is missing"
+      );
+    }
+
     console.log("Agent session updated.");
   } else if (eventType === "call.session_participant_left") {
     const event = payload as CallSessionParticipantLeftEvent;

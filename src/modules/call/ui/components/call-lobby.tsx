@@ -79,8 +79,12 @@ export const CallLobby = ({ onJoin }: Props) => {
             }
           />
           <div className="flex items-center justify-center gap-x-4">
-            <ToggleAudioPreviewButton className="bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-sm rounded-full p-3 data-[state=on]:bg-amber-200 data-[state=on]:border-amber-300" />
-            <ToggleVideoPreviewButton className="bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-sm rounded-full p-3 data-[state=on]:bg-amber-200 data-[state=on]:border-amber-300" />
+            <div className="bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-sm rounded-full p-3 data-[state=on]:bg-amber-200 data-[state=on]:border-amber-300">
+              <ToggleAudioPreviewButton />
+            </div>
+            <div className="bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-sm rounded-full p-3 data-[state=on]:bg-amber-200 data-[state=on]:border-amber-300">
+              <ToggleVideoPreviewButton />
+            </div>
           </div>
           <div className="flex gap-x-3 justify-between w-full pt-4">
             <Button
