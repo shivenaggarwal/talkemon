@@ -24,7 +24,6 @@ import {
 } from "@/components/ui/form";
 import Link from "next/link";
 import { useState } from "react";
-import { ro, se } from "date-fns/locale";
 
 const formSchema = z.object({
   email: z.string().email(),

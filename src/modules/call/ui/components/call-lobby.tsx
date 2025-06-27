@@ -1,7 +1,7 @@
 import { LogInIcon } from "lucide-react";
 import {
   DefaultVideoPlaceholder,
-  DreamVideoPlaceholder,
+  // DreamVideoPlaceholder,
   StreamVideoParticipant,
   ToggleAudioPreviewButton,
   ToggleVideoPreviewButton,
@@ -10,7 +10,6 @@ import {
 } from "@stream-io/video-react-sdk";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import { authClient } from "@/lib/auth-client";
-import { user } from "@/db/schema";
 import { GenerateAvatarUri } from "@/lib/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

@@ -86,15 +86,24 @@ export async function POST(req: NextRequest) {
     }
 
     const call = streamVideo.video.call("default", meetingId);
+    console.log("Connecting OpenAI agent...");
+
     const realtimeClient = await streamVideo.video.connectOpenAi({
       call,
       openAiApiKey: process.env.OPENAI_API_KEY!,
       agentUserId: existingAgent.id,
     });
+    console.log("OpenAI agent connected.");
+
+    console.log(
+      "Updating agent session with instructions:",
+      existingAgent.instructions
+    );
 
     realtimeClient.updateSession({
       instructions: existingAgent.instructions,
     });
+    console.log("Agent session updated.");
   } else if (eventType === "call.session_participant_left") {
     const event = payload as CallSessionParticipantLeftEvent;
     const meetingId = event.call_cid.split(":")[1]; // cid is formatted as "type:id"
