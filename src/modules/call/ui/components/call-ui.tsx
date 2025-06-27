@@ -10,7 +10,6 @@ interface Props {
 
 export const CallUI = ({ meetingName }: Props) => {
   const call = useCall();
-  console.log("whats in call?", call);
   const [show, setShow] = useState<"lobby" | "call" | "ended">("lobby");
 
   const handleJoin = async () => {
