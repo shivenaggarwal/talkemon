@@ -17,7 +17,7 @@ import {
   FormLabel,
   FormDescription,
 } from "@/components/ui/form";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useState } from "react";
 import { CommandSelect } from "@/components/command-select";
@@ -36,7 +36,7 @@ export const MeetingForm = ({
   initialValues,
 }: MeetingFormProps) => {
   const trpc = useTRPC();
-  // const router = useRouter();
+  const router = useRouter();
   const queryClient = useQueryClient();
 
   const [openNewAgentDialog, setOpenNewAgentDialog] = useState(false);
@@ -62,7 +62,11 @@ export const MeetingForm = ({
         onSucess?.(data.id);
       },
       onError: (error) => {
-        toast.error(error.message); //todo check if error code is forbidden redirect to upgrade
+        toast.error(error.message);
+
+        if (error.data?.code === "FORBIDDEN") {
+          router.push("/upgrade");
+        }
       },
     })
   );
@@ -81,7 +85,7 @@ export const MeetingForm = ({
         onSucess?.();
       },
       onError: (error) => {
-        toast.error(error.message); //todo check if error code is forbidden redirect to upgrade
+        toast.error(error.message);
       },
     })
   );

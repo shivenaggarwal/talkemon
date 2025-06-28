@@ -80,7 +80,7 @@ export const DashboardUserButton = () => {
           <DrawerFooter className="space-y-3 p-6">
             <Button
               variant="outline"
-              onClick={() => {}}
+              onClick={() => authClient.customer.portal()}
               className="bg-amber-50/50 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 shadow-md rounded-xl h-12 font-medium tracking-tight"
             >
               <CreditCardIcon className="size-4 text-amber-600" />
@@ -140,7 +140,10 @@ export const DashboardUserButton = () => {
           </div>
         </DropdownMenuLabel>
         <div className="p-2 space-y-1">
-          <DropdownMenuItem className="cursor-pointer flex items-center justify-between rounded-lg bg-amber-50/50 border border-amber-200/50 text-amber-800 hover:bg-amber-100 hover:border-amber-300 transition-all duration-300 p-3 font-medium tracking-tight">
+          <DropdownMenuItem
+            onClick={() => authClient.customer.portal()}
+            className="cursor-pointer flex items-center justify-between rounded-lg bg-amber-50/50 border border-amber-200/50 text-amber-800 hover:bg-amber-100 hover:border-amber-300 transition-all duration-300 p-3 font-medium tracking-tight"
+          >
             <span>Billing</span>
             <CreditCardIcon className="size-4 text-amber-600" />
           </DropdownMenuItem>

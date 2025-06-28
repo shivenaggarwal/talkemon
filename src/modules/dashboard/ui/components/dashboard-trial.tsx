@@ -15,11 +15,10 @@ export const DashboardTrial = () => {
 
   // if (!data) return null;
   if (!data)
-    return (
-      <div className="p-3 text-xs text-amber-600/70 bg-gradient-to-br from-amber-50/50 to-orange-50/50 rounded-xl border-2 border-amber-200 shadow-sm">
-        Loading trial info...
-      </div>
-    );
+    return null;
+    // <div className="p-3 text-xs text-amber-600/70 bg-gradient-to-br from-amber-50/50 to-orange-50/50 rounded-xl border-2 border-amber-200 shadow-sm">
+    //   Loading trial info...
+    // </div>
 
   return (
     <div className="bg-gradient-to-br from-amber-50/50 to-orange-50/50 border-2 border-amber-200 rounded-xl w-full shadow-lg backdrop-blur-sm flex flex-col gap-y-2 overflow-hidden">
