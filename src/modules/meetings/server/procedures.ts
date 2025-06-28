@@ -27,8 +27,19 @@ import { MeetingStatus, StreamTranscriptItem } from "@/modules/meetings/types";
 import { streamVideo } from "@/lib/stream-video";
 import { GenerateAvatarUri } from "@/lib/avatar";
 import JSONL from "jsonl-parse-stringify";
+import { streamChat } from "@/lib/stream-chat";
 
 export const meetingsRouter = createTRPCRouter({
+  generateChatToken: protectedProcedure.mutation(async ({ ctx }) => {
+    const token = streamChat.createToken(ctx.auth.user.id);
+    await streamChat.upsertUser({
+      id: ctx.auth.user.id,
+      role: "admin",
+    });
+
+    return token;
+  }),
+
   getTranscript: protectedProcedure
     .input(z.object({ id: z.string() }))
     .query(async ({ input, ctx }) => {
