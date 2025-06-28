@@ -1,8 +1,5 @@
 "use client";
 
-import { ErrorState } from "@/components/error-state";
-import { LoadingState } from "@/components/loading-state";
-import { auth } from "@/lib/auth";
 import { authClient } from "@/lib/auth-client";
 import { PricingCard } from "@/modules/premium/ui/components/pricing-card";
 import { useTRPC } from "@/trpc/client";
@@ -184,7 +181,7 @@ export const UpgradeViewError = () => {
               Something went wrong
             </h3>
             <p className="text-amber-700/80 font-medium">
-              We couldn't load the pricing plans. Please try again later.
+              We couldn&apos;t load the pricing plans. Please try again later.
             </p>
           </div>
           <button
