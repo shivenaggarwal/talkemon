@@ -26,32 +26,32 @@ export const CompletedState = ({ data }: Props) => {
   return (
     <div className="flex flex-col gap-y-4">
       <Tabs defaultValue="summary">
-        <div className="bg-white rounded-lg border px-3">
+        <div className="bg-gradient-to-br from-amber-50/50 to-orange-50/50 rounded-xl border-2 border-amber-200 px-3 shadow-lg backdrop-blur-sm">
           <ScrollArea>
-            <TabsList className="p-0 bg-background justify-start rounded-none h-13">
+            <TabsList className="p-0 bg-transparent justify-start rounded-none h-13">
               <TabsTrigger
                 value="summary"
-                className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[stat=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
+                className="text-amber-700/70 rounded-none bg-transparent data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-amber-400 data-[state=active]:text-amber-900 h-full hover:text-amber-800 font-medium transition-all duration-300"
               >
-                <BookOpenTextIcon /> Summary
+                <BookOpenTextIcon className="w-4 h-4 mr-2" /> Summary
               </TabsTrigger>
               <TabsTrigger
                 value="transcript"
-                className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[stat=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
+                className="text-amber-700/70 rounded-none bg-transparent data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-amber-400 data-[state=active]:text-amber-900 h-full hover:text-amber-800 font-medium transition-all duration-300"
               >
-                <FileTextIcon /> Transcript
+                <FileTextIcon className="w-4 h-4 mr-2" /> Transcript
               </TabsTrigger>
               <TabsTrigger
                 value="recording"
-                className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[stat=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
+                className="text-amber-700/70 rounded-none bg-transparent data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-amber-400 data-[state=active]:text-amber-900 h-full hover:text-amber-800 font-medium transition-all duration-300"
               >
-                <FileVideoIcon /> Recording
+                <FileVideoIcon className="w-4 h-4 mr-2" /> Recording
               </TabsTrigger>
               <TabsTrigger
                 value="chat"
-                className="text-muted-foreground rounded-none bg-background data-[state=active]:shadow-none border-b-2 border-transparent data-[stat=active]:border-b-primary data-[state=active]:text-accent-foreground h-full hover:text-accent-foreground"
+                className="text-amber-700/70 rounded-none bg-transparent data-[state=active]:shadow-none border-b-2 border-transparent data-[state=active]:border-b-amber-400 data-[state=active]:text-amber-900 h-full hover:text-amber-800 font-medium transition-all duration-300"
               >
-                <SparklesIcon /> Ask AI
+                <SparklesIcon className="w-4 h-4 mr-2" /> Ask AI
               </TabsTrigger>
             </TabsList>
             <ScrollBar orientation="horizontal" />
@@ -64,83 +64,110 @@ export const CompletedState = ({ data }: Props) => {
           <Transcript meetingId={data.id} />
         </TabsContent>
         <TabsContent value="recording">
-          <div className="bg-white rounded-lg border px-4 py-5">
+          <div className="bg-gradient-to-br from-amber-50/50 to-orange-50/50 rounded-xl border-2 border-amber-200 px-4 py-5 shadow-lg backdrop-blur-sm">
             <video
               src={data.recordingUrl!}
-              className="w-full rounded-lg"
+              className="w-full rounded-lg shadow-md border-2 border-amber-200/50"
               controls
             ></video>
           </div>
         </TabsContent>
         <TabsContent value="summary">
-          <div className="bg-whte rounded-lg border">
-            <div className="px-4 py-5 gap-y-5 flex flex-col col-span-5">
-              <h2 className="text-2xl font-medium capitalize">{data.name}</h2>
+          <div className="bg-gradient-to-br from-amber-50/50 to-orange-50/50 rounded-xl border-2 border-amber-200 shadow-lg backdrop-blur-sm">
+            <div className="px-6 py-6 gap-y-5 flex flex-col col-span-5">
+              <h2 className="text-2xl font-semibold capitalize text-amber-900 tracking-tight">
+                {data.name}
+              </h2>
               <div className="flex gap-x-2 items-center">
                 <Link
                   href={`/agents/${data.agent_id}`}
-                  className="flex items-center gap-x-2 underline underline-offset-4 capitalize"
+                  className="flex items-center gap-x-2 text-amber-600 hover:text-amber-800 hover:underline underline-offset-4 capitalize font-medium transition-colors duration-200"
                 >
                   <GeneratedAvatar
                     variant="botttsNeutral"
                     seed={data.agent.name}
-                    className="size-5"
+                    className="size-5 border border-amber-200 shadow-sm"
                   />
                   {data.agent.name}
                 </Link>{" "}
-                <p>{data.startedAt ? format(data.startedAt, "PPP") : ""}</p>
+                <p className="text-amber-700/80 font-medium">
+                  {data.startedAt ? format(data.startedAt, "PPP") : ""}
+                </p>
               </div>
               <div className="flex gap-x-2 items-center">
-                <SparklesIcon className="size-4" />
-                <p>General Summary</p>
+                <SparklesIcon className="size-4 text-amber-600" />
+                <p className="text-amber-900 font-semibold tracking-tight">
+                  General Summary
+                </p>
               </div>
               <Badge
                 variant="outline"
-                className="flex items-center gap-x-2 [&>svg]:size-4"
+                className="flex items-center gap-x-2 [&>svg]:size-4 bg-amber-50/30 border-2 border-amber-200 text-amber-800 hover:bg-amber-100 hover:border-amber-300 transition-all duration-300 shadow-sm rounded-lg w-fit"
               >
-                <ClockFadingIcon className="text-blue-700" />
+                <ClockFadingIcon className="text-amber-600" />
                 {data.duration ? formatDuration(data.duration) : "No duration"}
               </Badge>
-              <div>
+              <div className="prose prose-amber max-w-none">
                 <Markdown
                   components={{
                     h1: (props) => (
-                      <h1 className="text-2xl font-medium mb-6" {...props} />
+                      <h1
+                        className="text-2xl font-semibold mb-6 text-amber-900 tracking-tight"
+                        {...props}
+                      />
                     ),
                     h2: (props) => (
-                      <h1 className="text-xl font-medium mb-6" {...props} />
+                      <h2
+                        className="text-xl font-semibold mb-6 text-amber-900 tracking-tight"
+                        {...props}
+                      />
                     ),
                     h3: (props) => (
-                      <h1 className="text-lg font-medium mb-6" {...props} />
+                      <h3
+                        className="text-lg font-semibold mb-6 text-amber-900 tracking-tight"
+                        {...props}
+                      />
                     ),
                     h4: (props) => (
-                      <h1 className="text-base font-medium mb-6" {...props} />
+                      <h4
+                        className="text-base font-semibold mb-6 text-amber-900 tracking-tight"
+                        {...props}
+                      />
                     ),
                     p: (props) => (
-                      <p className="mb-6 leading-relaxed" {...props} />
+                      <p
+                        className="mb-6 leading-relaxed text-amber-800"
+                        {...props}
+                      />
                     ),
                     ul: (props) => (
-                      <ul className="list-disc list-inside mb-6" {...props} />
+                      <ul
+                        className="list-disc list-inside mb-6 text-amber-800 space-y-1"
+                        {...props}
+                      />
                     ),
                     ol: (props) => (
-                      <ul
-                        className="list-decimal list-inside mb-6"
+                      <ol
+                        className="list-decimal list-inside mb-6 text-amber-800 space-y-1"
                         {...props}
                       />
                     ),
                     li: (props) => <li className="mb-1" {...props} />,
                     strong: (props) => (
-                      <strong className="font-semibold" {...props} />
+                      <strong
+                        className="font-semibold text-amber-900"
+                        {...props}
+                      />
                     ),
                     code: (props) => (
                       <code
-                        className="bg-gray-100 px-1 py-0.5 rounded"
+                        className="bg-amber-100/70 text-amber-900 px-2 py-1 rounded border border-amber-200"
                         {...props}
                       />
                     ),
                     blockquote: (props) => (
                       <blockquote
-                        className="border-l-4 pl-4 italic my-4"
+                        className="border-l-4 border-amber-400 pl-4 italic my-4 text-amber-700 bg-amber-50/30 py-2 rounded-r"
                         {...props}
                       />
                     ),

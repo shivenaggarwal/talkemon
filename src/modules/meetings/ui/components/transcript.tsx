@@ -25,16 +25,16 @@ export const Transcript = ({ meetingId }: Props) => {
   );
 
   return (
-    <div className="bg-white rounded-lg border px-4 py-5 flex flex-col gap-y-4 w-full">
-      <p className="text-sm font-medium">Transcript</p>
+    <div className="bg-gradient-to-br from-amber-50/50 to-orange-50/50 rounded-xl border-2 border-amber-200 px-6 py-6 flex flex-col gap-y-4 w-full shadow-lg backdrop-blur-sm">
+      <p className="text-amber-900 font-semibold tracking-tight">Transcript</p>
       <div className="relative">
         <Input
           placeholder="Search Transcript"
-          className="pl-7 h-9 w-[240px]"
+          className="pl-10 h-11 w-[280px] border-2 border-amber-200 bg-amber-50/30 text-amber-900 placeholder:text-amber-600/70 focus:border-amber-400 focus:ring-amber-300/50 transition-all duration-300 rounded-lg shadow-sm"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
+        <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-amber-600/70" />
       </div>
       <ScrollArea>
         <div className="flex flex-col gap-y-4">
@@ -42,10 +42,10 @@ export const Transcript = ({ meetingId }: Props) => {
             return (
               <div
                 key={item.start_ts}
-                className="flex flex-col gap-y-2 hover:bg-muted p-4 rounded-md border"
+                className="flex flex-col gap-y-3 hover:bg-amber-50/50 p-4 rounded-lg border-2 border-amber-100 hover:border-amber-200 hover:shadow-md transition-all duration-300 bg-amber-50/20"
               >
-                <div className="flex gap-x-2 items-center">
-                  <Avatar className="size-6">
+                <div className="flex gap-x-3 items-center">
+                  <Avatar className="size-6 border border-amber-200 shadow-sm">
                     <AvatarImage
                       src={
                         item.user.image ??
@@ -57,14 +57,16 @@ export const Transcript = ({ meetingId }: Props) => {
                       alt="User Avatar"
                     />
                   </Avatar>
-                  <p className="text-sm font-medium">{item.user.name}</p>
-                  <p className="text-sm text-blue-500 font-medium">
+                  <p className="text-amber-900 font-semibold tracking-tight">
+                    {item.user.name}
+                  </p>
+                  <p className="text-amber-600 font-medium">
                     {format(new Date(0, 0, 0, 0, 0, 0, item.start_ts), "mm:ss")}
                   </p>
                 </div>
                 <Highlighter
-                  className="text-sm text-neutral-700"
-                  highlightClassName="bg-yellow-200"
+                  className="text-amber-800 leading-relaxed"
+                  highlightClassName="bg-gradient-to-r from-orange-200 to-amber-200 px-1 py-0.5 rounded font-medium text-amber-900"
                   searchWords={[searchQuery]}
                   autoEscape={true}
                   textToHighlight={item.text}
