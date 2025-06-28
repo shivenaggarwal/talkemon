@@ -43,7 +43,9 @@ export const AgentForm = ({
           trpc.agents.getMany.queryOptions({})
         );
 
-        // invalidate free tier usage todo
+        await queryClient.invalidateQueries(
+          trpc.premium.getFreeUsage.queryOptions()
+        );
         onSucess?.();
       },
       onError: (error) => {

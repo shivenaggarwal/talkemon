@@ -56,7 +56,9 @@ export const MeetingForm = ({
           trpc.meetings.getMany.queryOptions({})
         );
 
-        // invalidate free tier usage todo
+        await queryClient.invalidateQueries(
+          trpc.premium.getFreeUsage.queryOptions()
+        );
         onSucess?.(data.id);
       },
       onError: (error) => {
